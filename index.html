@@ -18,7 +18,7 @@
     new Vue({
       el: '#app',
       components: { Calendar },
-      template: '<Calendar :calendars="calendars" :schedules="schedules" style="height:600px" />',
+      template: '<Calendar ref="calendar" :calendars="calendars" :schedules="schedules" :useCreationPopup="true" style="height:600px" />',
       data: function() {
         return {
           calendars: [{ id: '1', name: 'Default', color: '#ffffff', backgroundColor: '#9e5fff' }],
@@ -29,8 +29,23 @@
             category: 'time',
             start: new Date(),
             end: new Date(new Date().getTime() + 60 * 60 * 1000)
-          }]
+          }],
+          calendar: null
         };
+      },
+      mounted: function() {
+        this.calendar = this.$refs.calendar.getInstance();
+        this.calendar.on('beforeCreateEvent', this.onBeforeCreateEvent);
+      },
+      methods: {
+        onBeforeCreateEvent: function(eventData) {
+          if (!eventData.title) {
+            alert('제목은 필수입니다!');
+            return;
+          }
+
+          this.calendar.createEvents([eventData]);
+        }
       }
     });
   </script>

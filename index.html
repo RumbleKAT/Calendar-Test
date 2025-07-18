@@ -19,7 +19,7 @@
     new Vue({
       el: '#app',
       components: { Calendar },
-      template: '<Calendar ref="calendar" :calendars="calendars" :schedules="schedules" :useCreationPopup="true" style="height:600px" />',
+      template: '<Calendar ref="calendar" :calendars="calendars" :schedules="schedules" :template="calendarTemplate" :useCreationPopup="true" style="height:600px" />',
       data: function() {
         return {
           calendars: [{ id: '1', name: 'Default', color: '#ffffff', backgroundColor: '#9e5fff' }],
@@ -31,7 +31,10 @@
             start: new Date(),
             end: new Date(new Date().getTime() + 60 * 60 * 1000)
           }],
-          calendar: null
+          calendar: null,
+          calendarTemplate: {
+            titlePlaceholder: '이 입력란을 작성하세요'
+          }
         };
       },
       mounted: function() {

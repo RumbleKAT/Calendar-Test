@@ -20,3 +20,9 @@ Run the unit tests with:
 ```bash
 npm test
 ```
+
+## Event Validation
+
+When creating events interactively, the calendar uses a `beforeCreateEvent` hook
+to ensure required fields are provided. An alert is shown if the title or start
+and end dates are missing, and the event will not be created.

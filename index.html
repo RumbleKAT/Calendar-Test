@@ -13,6 +13,7 @@
   <script src="./node_modules/vue/dist/vue.js"></script>
   <script src="./node_modules/@toast-ui/calendar/dist/toastui-calendar.min.js"></script>
   <script src="./node_modules/@toast-ui/vue-calendar/dist/toastui-vue-calendar.js"></script>
+  <script src="./validateEvent.js"></script>
   <script>
     var Calendar = tui.VueCalendar;
     new Vue({
@@ -39,11 +40,11 @@
       },
       methods: {
         onBeforeCreateEvent: function(eventData) {
-          if (!eventData.title) {
-            alert('제목은 필수입니다!');
+          var result = validateEventData(eventData);
+          if (!result.valid) {
+            alert(result.message);
             return;
           }
-
           this.calendar.createEvents([eventData]);
         }
       }

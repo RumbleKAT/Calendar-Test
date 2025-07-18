@@ -1,6 +1,6 @@
 # Vue2 ToastUI Calendar Example
 
-This project shows a minimal setup of [TOAST UI Calendar](https://github.com/nhn/tui.calendar) using Vue 2. It relies only on a few dependencies and can run without a build step.
+This project shows a minimal setup of [TOAST UI Calendar](https://github.com/nhn/tui.calendar) using Vue 2.
 
 ## Setup
 
@@ -8,10 +8,15 @@ This project shows a minimal setup of [TOAST UI Calendar](https://github.com/nhn
    ```bash
    npm install
    ```
-2. Open `index.html` in a modern browser. You may serve the folder with a simple static server such as:
+2. Start a static server and open the calendar:
    ```bash
-   npx http-server .
+   npm start
    ```
-   and then navigate to `http://localhost:8080`.
+   Then navigate to [http://localhost:8080](http://localhost:8080).
 
-The calendar will render with a single sample event.
+## Running Tests
+
+Run the unit tests with:
+```bash
+npm test
+```
